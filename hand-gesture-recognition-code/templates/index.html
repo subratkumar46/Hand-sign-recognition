@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Gesture Recognition</title>
+</head>
+<body>
+    <h1>Hand Gesture Recognition</h1>
+    <div id="gesture"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + '127.0.0.1'+ ':' + '5000');
+
+        socket.on('gesture_data', function(data) {
+            document.getElementById('gesture').innerHTML = '<p>Detected Gesture: ' + data.gesture + '</p>';
+        });
+    </script>
+</body>
+</html>
